@@ -1,0 +1,991 @@
+
+JDK => javac to compile [developer's computer to run]
+JRE =>  provides the runtime libraries and resources needed to execute Java programs in JVM. [end user's computer to run]
+JVM[executor] => byte code to machine code.
+
+
+    +-----------------------------+
+    |        JDK (Java Dev Kit)   | ----> compilation
+    | +-------------------------+ |
+    | |     JRE (Runtime)       | |
+    | | +---------------------+ | |
+    | | |      JVM (Virtual   | | |
+    | | |      Machine)       | | | ----> byte code to machine code [JVM]
+    | | +---------------------+ | |
+    | +-------------------------+ |
+    +-----------------------------+
+
+
++---------------------------+
+|          JDK              |
+|---------------------------|
+|  javac (Compiler)         |
+|  java (Runtime)           |
+|  Development Tools        |
+|  Libraries                |
++---------------------------+
+
+
++---------------------------+
+|          JRE              |
+|---------------------------|  => It's used for running compiled Java 
+|	                    |     applications but lacks development tools.
+|  java (Runtime)           |
+|  Libraries                |
++---------------------------+
+
++---------------------------+
+|          JVM              |
+|---------------------------|
+|  Interpreter/Executor     |
+|  Memory Management        |
+|  JIT Compiler (optional)  |
++---------------------------+
+
+=> JVM :  It includes an interpreter/executor for running bytecode, memory management, and optionally a Just-In-Time (JIT) compiler for optimizing performance.
+
+
+
+
+```
+        +---------------------+
+        |       Your Code     |
+        +---------------------+
+                 |
+                 v
+        +---------------------+
+        |   Compilation       |
+        |   (javac ClassName) |
+        +---------------------+
+                 |
+                 v
+        +---------------------+
+        |      Bytecode       |
+        |   (ClassName.class) |
+        +---------------------+
+                 |
+                 v
+        +---------------------+
+        |    Execution        |
+        |   (java ClassName)  |
+        +---------------------+
+                 |
+                 v
+        +---------------------+
+        |      JVM            |
+        +---------------------+
+                 |
+                 v
+        +---------------------+
+        |      JDK            |
+        | (Java Development   |
+        |    Kit)             |
+        +---------------------+
+                 |
+                 v
+        +---------------------+
+        |      JRE            |
+        | (Java Runtime       |
+        | Environment)        |
+        +---------------------+
+```
+
+- Your Java code is written by you and is the starting point.
+- Compilation (using `javac`) turns your code into bytecode, which is platform-independent.
+- Execution (using `java`) runs the bytecode on the Java Virtual Machine (JVM).
+- The JVM is a part of the Java Development Kit (JDK), which also includes development tools like `javac`.
+- The Java Runtime Environment (JRE) is a subset of the JDK, containing only the runtime components required to execute Java applications.
+
+
+JDK (Java Development Kit) contains tools like javac for compiling Java source code and is used for Java application development. 
+
+JRE (Java Runtime Environment) includes only the runtime environment necessary for executing Java applications, without development tools. 
+
+JVM (Java Virtual Machine) is the runtime environment where Java bytecode is executed, and it can be a part of both JDK and JRE.
+
+--------------------------------------------------------
+class => logical entity 
+object => physical entity
+
+------------
+Note ::
+------------
+===> this is a reference to the calling object .
+
+ex: 
+=====
+public boolean equals (Object obj){
+	return this == obj;
+} // method equals
+
+main() method is called by JVM run-time-system
+
+method ->|---> method signature
+	 |---> method body
+
+the main method signature is fixed i.e. 
+
+public static void main(String[] args){
+	System.out.println("Hello,World");
+}
+
+System.out.print();, 
+System.out.println();, and 
+System.out.printf();
+
+
+int => instance of type int
+ClassA => instance of type Class
+
+int age = 32; here age is "identifier(name:age)"
+
+varalbeName = arbitrary expression;
+age = (age+2)/2; i.e. var = expression;
+
+% modulus operator => returns integer remainder after integer division
+
+char = ' '; ' '=> is called delimiter
+
+
+Primitive  Size
+int        4 bytes
+long 	   8 bytes
+short      2 bytes
+byte  	   1 byte
+double     8 bytes
+float      4 bytes
+char       2 bytes
+boolean    1 byte
+
+byte(1)>short(2)>int(4)>long(8)>float(4)>double(8)>char(2)>boolean(1);
+
+
+object => reference variable / instance of a class
+
+
+note : we cannot declare objects of any class 
+instead we declare variables , called "reference variable"
+
+
+String s1;
+s1 = new String("hello world");
+
+
+note : real world example of using constuctor to initialze variable is "new String("hello , world")"
+
+new => operator allocates space in memory
+constructor =>|----> default (by compiler) ctor
+	      |----> parameterized-ctor (parameter)
+	      |----> No-Arg Constructor
+
+note => if you write your own ctor then compiler will not make another construcr i.e. default constructor.
+
+
+
+no.of charecters => str.length(); no-args , still returning nos.
+
+
+
+we know :
+// this is called mehtod overloading 
+i.e. same method name but different parameter
+String s1 = new String();
+String s2 = new String("transparent");
+
+
+identifier == name : true
+
+
+method overloading : 
+
+we have to difine method's signature that will consits of same identifier but differnet types paramerter i.e. different method signature
+ex : 
+
+public String findLast(int n, String s);
+public int findLast(String s , int n);
+
+
+
+
+========================JavaDoc===================
+Javadoc is a documentation tool in Java that allows developers to generate documentation for their code. Javadoc comments are special comments that start with `/**` and can include various tags to provide information about classes, methods, and fields. Here are some commonly used Javadoc tags along with their industry-level use cases:
+
+1. `@param`: This tag is used to describe a parameter of a method or constructor.
+
+   ```java
+   /**
+    * Calculates the sum of two numbers.
+    *
+    * @param num1 The first number to be added.
+    * @param num2 The second number to be added.
+    * @return The sum of num1 and num2.
+    */
+   public int add(int num1, int num2) {
+       return num1 + num2;
+   }
+   ```
+
+2. `@return`: This tag is used to describe the return value of a method.
+
+   ```java
+   /**
+    * Retrieves the name of the person.
+    *
+    * @return The name of the person.
+    */
+   public String getName() {
+       return name;
+   }
+   ```
+
+3. `@throws` or `@exception`: These tags are used to describe exceptions that a method may throw.
+
+   ```java
+   /**
+    * Divides two numbers.
+    *
+    * @param dividend The number to be divided.
+    * @param divisor The number by which the dividend will be divided.
+    * @return The result of the division.
+    * @throws ArithmeticException If the divisor is zero.
+    */
+   public double divide(double dividend, double divisor) throws ArithmeticException {
+       if (divisor == 0) {
+           throw new ArithmeticException("Division by zero is not allowed.");
+       }
+       return dividend / divisor;
+   }
+   ```
+
+4. `@see`: This tag is used to provide references to other classes or methods.
+
+   ```java
+   /**
+    * Sets the current time to the system time.
+    * See {@link OtherClass#otherMethod()} for related functionality.
+    * @see java.util.Date
+    */
+   public void setCurrentTimeToSystemTime() {
+       // Implementation here
+   }
+   ```
+
+5. `@deprecated`: This tag is used to mark a method, class, or field as deprecated, indicating that it should not be used.
+
+   ```java
+   /**
+    * @deprecated This method is deprecated and will be removed in a future release.
+    */
+   @Deprecated
+   public void oldMethod() {
+       // Deprecated method implementation
+   }
+   ```
+
+6. `@version`: This tag is used to specify the version information of the class or package.
+
+   ```java
+   /**
+    * @version 1.2
+    */
+   public class MyClass {
+       // Class implementation
+   }
+   ```
+
+7. `@author`: This tag is used to specify the author(s) of the code.
+
+   ```java
+   /**
+    * @author John Doe
+    */
+   public class MyClass {
+       // Class implementation
+   }
+   ```
+
+8. `@since`: This tag is used to indicate the version of Java in which the code was introduced.
+
+   ```java
+   /**
+    * This feature was introduced in Java 8.
+    *
+    * @since 1.8
+    */
+   public void newFeature() {
+       // Implementation of a new feature
+   }
+   ```
+
+These are some of the most commonly used Javadoc tags in Java. Properly documenting your code using these tags helps improve code readability and provides valuable information to other developers who may use your code.
+
+x.getName(); here "." is called method-selection-operator
+
+
+The == operator simply compares two references: true is returned if and only if the two references contain the same address. 
+
+equals() vs == :
+equals() => contents 
+==       => reference address( memory location)
+
+
+
+Local variable => variables declared with in a method , including the method's parameter .
+
+ex :: 
+
+/**
+*@param n - the integer whose primality is being tested
+* @return true - if n is prime
+*/
+
+public static boolean isPrime(int n){
+
+	if(n==2)
+	   retrun true;
+	else
+	   return false;
+}
+
+
+Local variables must be explicitly initialized before they are used. 
+
+ex :
+public void run(){
+	int k;
+	System.out.println (isPrime (k));
+} // method run
+
+error : "variable k might not have been initialized.”
+
+
+public void run(){
+
+  int k;
+  boolean flag = true; // flase
+  if(flag)
+     k=2;
+  else
+     k=1;
+  System.out.println(isPrime(k));
+
+}
+
+note :: scope => area/region where they are declared
+
+
+
+        int x = 0;
+        while (true) {
+            System.out.println("before if(){}");
+            if (x == 3) {
+                break;
+            }
+            x++;
+            System.out.println("after if(){}");
+       }
+
+
+note : first make the variable accessible for all if requird then assing within method or block
+
+ex :
+        int x = 18; // OR int x;
+        {
+            x = 443;
+        }
+        System.out.println("x = " + x);
+
+
+
+
+break[exit from the parent(outer) loop/block/method] : it will come out of the parent block/loop/method i.e. it will not execute the next instruction(next line code)
+
+
+note : "break;" , "return;" to terminate parent loop;
+
+note : in java nested method is not allowed
+
+ex : 
+public void go(){
+	public void do(){
+
+	}
+}
+// it will show ";" expected 
+
+====================== Arrays =====================
+
+
+arrays => collection of elements of same type , stored in contiguously in memory.
+
+elements are stored next to each other .
+
+arrays => |---> initialize {-,-}
+	  |---> declare [n]
+
+
+
+condition : 0 < x(index) < x.length-1
+
+
+
+swapping : 
+double[ ] x = {5.0, 8.0, 12.2, 20.0};
+swap (x, 1, 2);
+public void swap(double[] a, int i , int j){
+	
+// internally double[] a = {5.0, 8.0, 12.2, 20.0};
+	double temp = a[i];
+	a[i] = a[j];
+	a[j] = tem;
+} // methd swap
+
+// output formatter 
+
+DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        double d = 32.323;
+        System.out.println("d = " + decimalFormat.format(d));
+
+o/p : 32.32 , !32.323
+
+
+
+
+
+
+=============== Object-Oriented-Concepts ========
+
+
+
+Data Abstraction :
+
+A user of a class concentrates on the class’s method specifications, that is, what a class provides. A
+developer of a class, on the other hand, focuses on the class’s fields and method definitions, that is, how
+the class is defined. This separation—called data abstraction—of what from how is an essential feature
+of object-oriented programming. For example, programmers who use the String class will not care about
+the fields that represent a string or how the methods are defined. Such details would be of no help when
+you are trying to develop a class that uses the String class, but were essential to the developers of the
+String class.
+
+-------------------------------------------
+real-world example of data abstraction ::
+-------------------------------------------
+==> as we drive bike , car we don't care what are the principles , rules , laws are applied to work , function properly only we care what functionality they proivide and we use those functionality , this is called data abstraction i.e. expose the required functionality not the internal working .
+
+We can summarize our discussion of classes so far by saying that from the developer’s perspective, a class
+consists of fields and the definitions of methods that act on those fields. A user’s view is an abstraction
+of this: A class consists of method specifications
+
+
+// ------ Abstract Methods and Interfaces ---------
+
+interface : an interface is a collection of abstract methods and consts
+
+----------------------------------------------
+interface follows data abstraction principal;
+----------------------------------------------
+
+interface : all [fields , methods] are public
+
+abstract : a abstract is a collection of abstract and non-abstract mehotds and ...
+
+#1) declaration : void doSomething();
+#2) define/definition : void doSomething(){
+	// code 
+}
+
+interface => contract type [no definition]
+class     => concrete type [yes definition]
+
+private > default > protected > public => visibility modifier
+
+
+general term 		  object-oriented term
+-------------		------------------------
+abstract data type          interface
+data structure		    class
+
+
+A data structure is the implementation of an abstract data type.
+
+
+A user is interested in abstract data types—interfaces—and a class’s method specifications, while a developer focuses on data structures, namely, a class’s fields and method definitions
+
+
+--------- Developer vs User vs End-User ----------
+
+Developer => makes code / framework etc
+User      => uses developer's code
+end-use   => client who only runs the code
+
+A user of a class writes code that includes an instance of that class. 
+
+Someone who simply executes a program that includes an instance of a class is called an
+end-user. 
+
+A developer of a class actually creates fields and method definitions.
+
+
+
+--------------- Inheritance and Constructors ------
+
+
+Constructors provide initialization for instances of a given class. For that reason, constructors are never inherited. 
+
+But whenever a subclass constructor is called, the execution of the subclass constructor starts
+with an automatic call to the superclass’s default constructor. This ensures that at least the default initialization of fields from the superclass will occur.
+
+
+             Relationship
+		   |
+     ---------------------------------
+     |                               |
+   IS-A                             HAS-A
+(inheritance)                   (aggregation)
+
+
+
+inheritance [protected] :: use inheritance when you absolutely need those classe/interfaces which will be surely benificial for your code .
+
+note :: inheritance will not work in "private"
+
+
+the fields in a class constitute a has-a relationship to the class.
+
+
+
+
+ Information Hiding ::
+--------------------------
+The Principle of Data Abstraction states that a user’s code should not access the implementation details of the class used. By following that principle, the user’s code is protected from changes to those implementation details, such as a change in fields.
+
+
+
+Java supports information hiding through the use of the protected visibility modifier for fields. Through visibility modifiers such as private and protected, Java forces users to access class members only to the extent permitted by the developers. 
+
+The term encapsulation refers to the grouping of fields and methods into a single entity—the class—whose implementation details are hidden from users.
+
+ex : encapsulation is supported by class
+
+
+the encapsulation of fields and methods into a single entity with information-hiding capabilities, the inheritance of a class’s fields and methods
+by subclasses, and polymorphism .
+
+
+The Unified Modeling Language 
+-----------------------------
+
+
+
+For each project, we will illustrate the classes and relationships between classes with the Unified Modeling Language (UML). UML is an industry-standardized language, mostly graphical, that incorporates current software-engineering practices that deal with the modeling of systems. The key visual tool in UML is the class diagram. For each class—except for widely used classes such as String and Random—the
+class diagram consists of a rectangle that contains information about the class. The information includes the name of the class, its attributes and operations. For the sake of simplicity, we will regard the UML term attribute as a synonym for field. Similarly, the UML term operation will be treated as a synonym for method.
+
+
+
+
+Visibility information is abbreviated:
++, for public visibility
+−, for private visibility
+#, for protected visibility
+no-symbol, for default visibility
+
+
+
+Sample :: 
+---------------------------------------
+|             ClassName		      |
+---------------------------------------
+| # name : String		      |
+| # grossPay : int		      |
+---------------------------------------
+| + fullTimeEmployee()                |
+| + fullTimeEmployee(name: String,    |
+|		     grossPay: double)|
+| + getName() : String                |
+| + getGrossPay() : double            |
+---------------------------------------
+
+Figure : A UML class-diagram for the FullTimeEmployee class
+
+
+
+
+
+---------- Static variables , constants and methods -------------------------
+
+
+
+
+Instance Variable : FullTimeEmployee =>|---> oldEmployee [ memory locn 50]
+                                       |---> currentEmployee [memory locn 100]
+				       |---> newEmployee [memory locn 150]
+
+
+
+note : we can define one time but assing many times with differnt memory location =>
+
+FullTimeEmployee fullTimeEmployee; // define one time 
+fullTimeEmploee = new FullTimeEmployee(); // location 50
+fullTimeEmploee = new FullTimeEmployee(); // location 100
+fullTimeEmploee = new FullTimeEmployee(); // location 150
+fullTimeEmploee = new FullTimeEmployee(); // location 200
+
+in the above reference variable is same but object is created with different memory location . many beginners will think that we can have one unique variable name but it is not true . This is the live example.
+
+ex : int a;
+     a = 23;
+     a=32;
+     a=543; // etc same as fullTimeEmployee above
+
+
+
+
+statci variable : class level variable
+The space for a static variable—also known as a class variable—is shared by all instances of the class.
+
+Note : changes of static variable contents will reflect to all instances/reference variable.
+
+
+
+Constant Identifier :
+-----------------------
+ A class may also have constant identifiers, also called “symbolic constants” or “named constants”.
+A constant identifier is an identifier that represents a constant, which is a variable that can be assigned
+to only once. The declaration of a constant identifier includes the reserved word final—indicating only
+one assignment is allowed—as well as the type and value of the constant. For example, we can write
+protected final static int SPEED_LIMIT = 65.0;
+
+
+
+
+
+
+// ----------------- Exception Handling --------------------------------
+
+
+
+A robust program is one that does not terminate unexpectedly from invalid user-input. We almost
+always prefer programs that—instead of “crashing”—allow recovery from an error such as the input of
+7.o instead of 7.0 for a double. Java’s exception-handling feature allows the programmer to avoid almost
+all abnormal terminations.
+
+
+
+
+
+ Propagating Exceptions :: 
+-----------------------------
+
+
+What happens if an exception, such as NoSuchElementException, is thrown in a method that does not
+catch that exception? Then control is transferred back to the calling method: the method that called the
+method that threw the exception. This transferring of control is known as propagating the exception. 
+
+
+ex : 
+
+public void doSomeThing(){
+
+	if()
+           throw new XYZException();
+}
+
+try{
+	doSomeThing();
+}catch(Exception e){
+  e.printStackTrace();
+}
+
+
+
+If a propagated exception is not caught in a method, the exception is propagated back to the calling method.
+If the calling method does not handle the exception, then the exception is propagated back to the method
+that called the calling method itself.
+
+
+
+
+Checked Exception ::
+----------------------
+
+
+Exceptions related to input or output, such as when a file is not found or the end-of-file marker is
+encountered while input is being read, are the most common examples of checked exceptions. With a
+checked exception, the compiler checks that either the exception is caught within the method itself or—to
+allow propagation of the exception—that a throws clause is appended to the method heading. For an
+example of the latter, we might have
+
+public void sample() throws IOException
+{
+
+}
+
+
+This indicates that the sample method might throw an IOException object. If so, the exception will be
+propagated back to the method that called sample. That calling method must either catch IOException
+or append the same throws clause to its method heading. And so on.
+
+i.e. #1) try{
+	sample();
+}catch(Exception e){
+	e.printStackTrace();
+}
+
+or sampleMethodContainerMethodSignature() throws IOException;
+
+i.e. #2) public void parentSample() throws IOException{
+		sample();
+	 }
+
+ Checked exceptions are propagated
+for the same reason that other exceptions are propagated: It might be preferable to handle all exceptions
+at a higher level for the sake of uniformity, or there might be better facilities (such as a GUI window)
+available at the higher level.
+
+
+
+
+If you do have a catch block for RuntimeException, make sure that catch block is not followed by a
+catch block for a subclass of RuntimeException. For example, because NullPointerException is
+a subclass of RuntimeException, the following sequence of catch blocks will generate a compile-time
+error:
+catch (RuntimeException e)
+{
+// code to handle the exception
+} // catch RuntimeException
+catch (NullPointerException e) // error!
+{
+// code to handle the exception
+} // catch NullPointerException
+The error message will inform you that the second catch block is unreachable code.
+
+
+-----------------------------------------------------------------------------
+An exception can be explicitly thrown by the programmer, who gets to decide which exception class will be instantiated and under what circumstances the exception will be thrown.
+-----------------------------------------------------------------------------
+ex : 
+-----
+public double smaller (double price1, double price2){
+	if (Math.abs (price1 - price2) > Math.min (price1, price2))
+		throw new ArithmeticException ("difference too large");
+	return Math.min (price1, price2);
+} // method smaller
+
+
+
+If the given comparison is true, the throw statement is executed, which creates a new instance of the
+exception class ArithmeticException by calling the constructor that takes a String argument. The
+exception will be propagated back to the method that called smaller and the execution of the smaller
+method will immediately terminate. In the above example, the exception is not caught, so the program
+terminates. The output is
+java.lang.ArithmeticException: difference too larg
+
+
+
+
+
+The choice of ArithmeticException as the exception class to be instantiated is somewhat arbitrary.
+A user can even create new exception classes. For example,
+
+public class UnreasonablenessException extends RuntimeException{
+	public UnreasonablenessException (String s){
+		super (s);
+	} // constructor with String parameter
+} // class UnreasonablenessException
+
+
+
+
+-----------------------
+The finally Block :: 
+-----------------------
+
+
+Under normal circumstances, any code you place after the last catch block will be executed whether or not
+any exceptions were thrown in the try block. So you can place clean-up code—such as closing files—after
+the last catch block. There are two drawbacks to this approach. First, there may be an exception thrown
+in the try block that is not caught in a catch block. Another danger is that one of the catch blocks may
+itself throw an exception that is not caught. Then the clean-up code will not be executed. To avoid these
+pitfalls, Java allows a finally block after the last catch block. 
+
+we can write :: 
+-----------------
+
+
+
+try{
+	... // code that may throw an exception
+} // try
+catch (NumberFormatException e){
+	... // code to handle NumberFormatException
+} // catch NumberFormatException
+catch (IOException e){
+	... // code to handle IOException
+} // catch IOException
+finally{
+	... // clean-up code; will be executed even if there are uncaught
+	   // exceptions thrown in the try block or catch blocks.
+} // finally
+
+
+
+
+Note :: If your try or catch blocks may throw uncaught exceptions, you should include a finally
+block—otherwise, any code placed after the last catch block may not be executed. Finally, a finally
+block is required by the Java language if you have a try block without a catch block.
+
+
+
+-----------------------------
+The Java Virtual Machine ::
+-----------------------------
+
+             high-level (compiled)         low-level (interpreted/executed)
+source code --------------------> bytecode ------------------------------> JVM
+    	    javac ClassName.java                   java ClassName
+
+
+----------------------
+Garbage Collection ::
+----------------------
+
+The memory for objects is allocated when the new operator is invoked, but what about de-allocation?
+Specifically, what happens to the space allocated for an object that is no longer accessible? For example,
+suppose an object is constructed in a method, and at the end of the execution of that method, there
+are no references pointing to the object. The object is then inaccessible: garbage, so to speak. If your
+program generates too much garbage, it will run out of memory, which is an error condition. Errors, unlike
+exceptions, should not be caught, so an error will force the abnormal termination of your program. Are
+you responsible for garbage collection, that is, for de-allocating inaccessible objects?
+
+
+
+Fortunately, you need not worry about garbage collection. The Java run-time system includes a
+method that performs automatic garbage collection. This method will be invoked if the new operator is
+invoked but there is not enough memory available for the object specified. With the supersizing of memory
+in recent years, this is an increasingly rare occurrence. To free up unused memory, the space for any object
+to which there are no references can be de-allocated. The garbage collector will seek out big chunks of
+garbage first, such as an array. In any event, this is all taken care of behind the scenes, so your overall
+approach to the topic of garbage collection should be “Don’t worry. Be happy.”
+
+
+-------------
+Packages ::
+-------------
+
+A package is a collection of related classes. For each such class, the file in which the class is declared starts with the package declaration. For example, a file in a package of classes related to neural networks
+might start with
+
+package neuralNetwork;
+
+
+If a file includes an instance of the Another class, that class can be “imported” into the file. This is done with an import directive, starting with the reserved word import:
+
+import java.util.Xyz; // or 
+import com.madeeasy.service.UserService;
+
+
+here visibility modifer comes into picture ::
+---------------------------------------------
+|----> private [within same class]
+|----> default [within same package]
+|----> protected [subclass]
+|----> public [from anywhere]
+
+--------
+Note ::
+--------
+
+====> The instanceof operator returns true if and only if, at run-time, the object referenced by the left operand is an instance of the class that is the right operand.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
