@@ -516,7 +516,7 @@ A user is interested in abstract data types—interfaces—and a class’s metho
 
 Developer => makes code / framework etc
 User      => uses developer's code
-end-use   => client who only runs the code
+end-user   => client who only runs the code
 
 A user of a class writes code that includes an instance of that class. 
 
